@@ -1,0 +1,49 @@
+.nav_link:hover {
+    cursor: pointer;
+}
+
+.nav_link {
+    margin-right: 10px;
+}
+
+ul {
+    /* List styles */
+    list-style-type: none;
+    /* Type of bullet point (disc, circle, square) */
+    list-style-position: inside;
+    padding-inline-start: 0px;
+}
+
+li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container {
+    width: 40%;
+    padding: 10px;
+    margin: auto;
+}
+
+.todoList {
+    margin: 0;
+}
+
+.todoList input {
+    padding: 10px;
+    width: 83%;
+    border-radius: 10px 0px 0px 10px;
+    border: 2px solid black
+}
+
+.todoList button {
+    padding: 10px;
+    border-radius: 0px 10px 10px 0px;
+    border: 2px solid black
+}
+
+.todoList button:hover {
+    cursor: pointer;
+}
