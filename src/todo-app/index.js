@@ -2,11 +2,16 @@ import { useState } from "react"
 import "../assets/Todo.css"
 const TodoApp = () => {
     const [todos, setTodos] = useState([])
+    const [doneTodos, setDone] = useState([])
     const [todoInputValue, setTodoInputValue] = useState("")
+    const [showTodo, setShowTodo] = useState(false)
+
+
 
     const addTodo = () => {
         todoInputValue.length > 0 && setTodos((prevTodos) => [...prevTodos, { 'name': todoInputValue, 'is_done': false }])
         setTodoInputValue('');
+        setShowTodo(false)
     }
 
     const handleTodoInputOnChange = (event) => {
@@ -14,7 +19,19 @@ const TodoApp = () => {
     }
 
     const updateTodoStatus = (todoName) => {
-        setTodos(todos.map((todo, key) => todoName === todo.name ? [{ ...todo, is_done: true }] : todo))
+        let updatedTodo = todos.map((todo) => {
+            if (todo.name === todoName) {
+                setDone((prevTodos) => [...prevTodos, { ...todo, is_done: true }])
+            }
+            return todo
+        }).filter(todo => todo.name !== todoName)
+
+
+        setTodos(updatedTodo)
+    }
+
+    const deleteTodo = (todoName) => {
+        setDone(doneTodos.filter(todo => todo.name !== todoName))
     }
 
     return (
@@ -28,54 +45,37 @@ const TodoApp = () => {
                 textDecoration: "underline",
                 marginTop: "10px    "
             }} >
-                <span className="nav_link">Todo</span>
-                <span className="nav_link">Done</span>
+                <span className="nav_link" onClick={() => setShowTodo(false)}>Todo</span>
+                <span className="nav_link" onClick={() => setShowTodo(true)}>Done</span>
             </div>
-            <ul>{
-                todos.length > 0 ?
-                    todos.filter(todo => todo.is_done === false).map((todo, index) =>
-                        <li key={index}>
-                            <span>{todo.name}</span>
-                            <button onClick={() => updateTodoStatus(todo.name)}>Done</button>
-                        </li>
-                    )
-                    :
-                    <span>No Available Todo</span>
+            {
+                showTodo === false ?
+                    <ul>
+                        <Task todos={todos} action={updateTodoStatus} actionName="Done" />
+                    </ul> :
+                    <ul>
+                        <Task todos={doneTodos} action={deleteTodo} actionName="Delete" />
+                    </ul>
             }
-
-            </ul>
         </div >
 
     )
 
 }
 
-// todos.length > 0 ?
-//     todos.filter(todo => todo.is_done === false).map((todo, index) =>
-//         <li key={index}>
-//             <span>{todo.name}</span>
-//             <button onClick={() => updateTodoStatus(todo.name)}>Done</button>
-//         </li>
-//     )
-//     :
-//     <span>No Available Todo</span>
 
-
-// const TodoItem = (props) => {
-//     const { emitFunction } = props
-
-//     const handleButtonClick = () => {
-//         // Trigger the function received from the parent component
-//         emitFunction();
-//     };
-//     return (
-//         <li>
-//             <span>{props.todo.name}</span>
-//             <button onClick={handleButtonClick}>Done</button>
-//             <button>Doing</button>
-//         </li>
-//     )
-
-// }
+const Task = (props) => {
+    return (
+        props.todos.length > 0
+            ?
+            props.todos.map((todo, index) =>
+                <li key={index}>
+                    <span>{todo.name}</span>
+                    <button onClick={() => props.action(todo.name)}>{props.actionName}</button>
+                </li>)
+            :
+            <span>No Data Available</span>
+    )
+}
 
 export default TodoApp
