@@ -4,6 +4,7 @@ import DoneTodos from "./pages/DoneTodos"
 import Todo from "./pages/Todo"
 import { useState, createContext } from "react"
 import { Routes, Route, useNavigate } from "react-router-dom"
+import logo192 from "../assets/logo192.png"
 
 export const AppContext = createContext()
 
@@ -44,6 +45,13 @@ const Home = () => {
     return (
         <div className="container">
             <div className="vertical-center">
+                <div className="container-header">
+                    <div className="title">
+                        <img src={logo192} alt="re" width={"30px"} />
+                        <h2>Todo App</h2>
+                    </div>
+                    <p>Powered by REACT</p>
+                </div>
                 <div className="todo-input">
                     <input onChange={handleToInputChange} value={todoInputValue} />
                     <button onClick={addTodo}>Add Todo</button>
