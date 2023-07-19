@@ -1,12 +1,99 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+
+:root {
+    --font-roboto: "Roboto Slab", serif;
+    --font-raleway: "Raleway", sans-serif;
+}
+
+body {
+    font-family: var(--font-roboto);
+    background-color: gainsboro;
+}
+
+.container {
+    width: 100%;
+    padding: 10px;
+    margin: auto;
+    height: 100vh;
+    position: relative;
+}
+
+.vertical-center {
+    max-width: 500px;
+    min-width: 300px;
+    width: 500px;
+    margin: 0px auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: lightgray;
+    border-radius: 10px;
+    height: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow-y: scroll;
+}
+
+.todo-input {
+    margin: 0;
+    display: flex;
+    margin-top: 10px;
+}
+
+.todo-input input {
+    padding: 7px;
+    width: 80%;
+    border-radius: 5px 0px 0px 5px;
+    font-size: x-large;
+    background-color: gainsboro;
+    border: 1px solid lightslategray;
+    color: lightslategray;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.todo-input input:focus {
+    border: 2px solid gray;
+}
+
+.todo-input button {
+    padding: 8px;
+    width: 20%;
+    border-radius: 0px 5px 5px 0px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: lightslategray;
+    border: 1px solid gray;
+    color: white;
+}
+
+.todo-input button:hover {
+    cursor: pointer;
+    background-color: gray;
+    color: gainsboro;
+}
+
+.nav-bar {
+    font-size: large;
+    margin-top: 10px;
+}
+
 .nav_link:hover {
     cursor: pointer;
+    color: darkgray;
 }
 
 .nav_link {
     margin-right: 10px;
+    color: lightslategray;
 }
 
 ul {
+    margin-top: 2em;
     /* List styles */
     list-style-type: none;
     /* Type of bullet point (disc, circle, square) */
@@ -19,31 +106,52 @@ li {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+    background-color: gainsboro;
+    padding: 5px;
+    border-radius: 10px;
+    color: dimgrey;
+    border: 1px solid gray;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
-.container {
-    width: 40%;
-    padding: 10px;
-    margin: auto;
+li button {
+    font-size: 15px;
+    font-weight: 500;
+    background-color: gray;
+    padding: 5px;
+    border-radius: 5px;
+    color: gainsboro;
+    border: 1px solid white;
+
 }
 
-.todoList {
-    margin: 0;
-}
-
-.todoList input {
-    padding: 10px;
-    width: 83%;
-    border-radius: 10px 0px 0px 10px;
-    border: 2px solid black
-}
-
-.todoList button {
-    padding: 10px;
-    border-radius: 0px 10px 10px 0px;
-    border: 2px solid black
-}
-
-.todoList button:hover {
+li button:hover {
+    background-color: lightslategray;
+    color: white;
     cursor: pointer;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: gainsboro;
+}
+
+g
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
