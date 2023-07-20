@@ -1,0 +1,31 @@
+.container {
+    width: 100%;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+}
+
+form {
+    display: inline-block;
+    position: absolute;
+    width: 300px;
+    margin: 1px auto;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 12px;
+}
+
+form input[type="submit"] {
+    width: 108%;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.error {
+    color: red;
+}
